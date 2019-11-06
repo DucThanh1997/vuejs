@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click = "increase(2, $event)"> Click me </button>
+        <p> {{ count }} </p>
+        <p v-on:mouseover=cordinateee> cordinate {{ x }} / {{ y }} - <span v-on:mousover.stop=""> Dead Spot </p>
+        <!-- cái event ở trên sẽ gọi đến hàm function sau đó in ra tọa độ x y nhưng đến đoạn có dead spot thì nó ko in ra được vì mình để chữ
+        .stop vào rồi-->
+        <input type = "text" v-on:keyup.enter.space="alertMe">
+        <!-- bao giowf bạn bấm cách với enter nó sẽ cảnh báo -->
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                count: 0,
+                x: 0,
+                y: 0
+            },
+            methods: {
+                increase: function(step, event) {
+                    this.count = this.count + step
+                },
+                cordinateee: function(event) {
+                    this.x = event.clientX;
+                    this.y = event.clientY;
+                },
+                alertMe: function() {
+                    alert("okke")
+                }
+            }
+        })
+    </script>
+    <!-- v-on:"và 1 hành động xảy ra" = dẫn tới chức năng nào đó-->
+    <!-- nhét thêm object ở ngoài vào bằng cách nhét vào dấu () trong function-->
+</body>
+</html>

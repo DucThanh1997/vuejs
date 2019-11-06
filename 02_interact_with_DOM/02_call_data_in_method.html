@@ -1,0 +1,35 @@
+<!DOCTYPE html> 
+<html>
+<head>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id='app'>
+        <h1 v-once> {{title}} </h1>
+        <p> {{ change() }} - <a v-bind:href="link">Google</a></p>
+        <br>
+        <p v-html="htmlll"></p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                title: "hello",
+                link: "http://google.com",
+                htmlll: "<p> aaaa</p>"
+            },
+            methods: {
+                change: function() {
+                    this.title = "hello world"
+                    return this.title
+                }
+            }
+        });
+    </script>
+    <!-- cái this.title trỏ đến cái title ở data đây là cách vuejs động đến khi ở methods nhưng muốn sờ đến data -->
+    <!-- còn cái v-bind để đính cái attribute vào data có tên là link-->
+    <!-- như các bạn thấy cái title được sửa lại lần nữa ở function change và nếu bạn muốn lấy giá trị nguyên gốc ban đầu bạn phải thêm v-once vào-->
+</body>
+</html>

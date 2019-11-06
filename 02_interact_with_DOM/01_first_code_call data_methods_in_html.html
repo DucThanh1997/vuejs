@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>VueJS</title>
+	<link rel="stylesheet" href="">
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{ changeTitle() }}</p>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                title: 'hello world',
+            },
+            methods: {
+                changeTitle: function() {
+                    return "hello"
+                }
+            }
+            
+        });
+    </script>
+    <!-- ở đây dù là method hay data cũng chỉ cần gọi tên ra thôi nếu là method thì thêm () và đoạn javascript nói chúng và vuejs nói riêng
+        nó năm ở giữa html code và việc render ra đến màn hình cuối cùng-->
+</body>
+</html>
