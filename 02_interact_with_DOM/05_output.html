@@ -5,14 +5,45 @@
 </head>
 
 <body>
-    <button v-on:click = "increase()"> increase </button>
-    <p> counter: {{ counter }} </p>
-    <p> result: {{ result }} </p>
-
+    <div id="app">
+        <button @click = "counter++"> increase </button>
+        <button v-on:click = "counter--"> decrease </button>
+        <button v-on:click = "secondCounter++"> increase second </button>
+        <p> counter: {{ counter }} | {{ secondCounter }}</p>
+        <p> result: {{ result() }} | {{ output }} </p>
+    </div>
     <script>
         new Vue({
-            el: 
-        })
+            el: "#app",
+            data: {
+                counter: 0,
+                secondCounter: 0
+            },
+            computed: {
+                output: function() {
+                    console.log('computed')
+                    return this.counter > 5 ? "greater 5" : "Smaller than 5"
+                },
+            },
+            watch: {
+                counter: function(value) {
+                    var vm = this;
+                    setTimeout(function() {
+                        vm.counter = 0;
+                    }, 2000);
+                },
+            },
+            methods: {
+                result() {
+                    console.log('methods')
+                    return this.counter > 5 ? "greater 5" : "Smaller than 5"
+                }
+            }
+        });
     </script>
+    <!-- computed gọi và dùng như data nhưng nó lại là function như methods -->
+    <!-- computed biết cái cần để ý nên nó chỉ chạy 1 lần còn methods là lúc đ nào cũng chạy. ví dụ mày bấm cộng secondCounter 
+    methods vẫn chạy còn output thì không vì nó biết nó chỉ cần quan tâm đến thằng counter đi -->
+    <!-- watch dùng để thực hiện sự kiện khi biến trong data thay đổi-->
 </body>
 </html>
