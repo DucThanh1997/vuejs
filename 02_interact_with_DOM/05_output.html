@@ -6,6 +6,7 @@
 
 <body>
     <div id="app">
+<<<<<<< HEAD
         <button v-on:click = "counter++"> increase </button>
         <button v-on:click = "counter--"> decrease </button>
         <button v-on:click= "secondCounter++"> Increase second </button>
@@ -16,6 +17,14 @@
     </div>
     
 
+=======
+        <button @click = "counter++"> increase </button>
+        <button v-on:click = "counter--"> decrease </button>
+        <button v-on:click = "secondCounter++"> increase second </button>
+        <p> counter: {{ counter }} | {{ secondCounter }}</p>
+        <p> result: {{ result() }} | {{ output }} </p>
+    </div>
+>>>>>>> fe8e4d394f1246c86142a9868ea57006d6669739
     <script>
         new Vue({
             el: "#app",
@@ -25,15 +34,38 @@
             },
             computed: {
                 output: function() {
+<<<<<<< HEAD
                     return this.counter >  5 ? "Greater 5" : "Smaller than 5";
                 }
             },
             methods: {
                 increase: function() {
                     return this.counter >  5 ? "Greater 5" : "Smaller 5";
+=======
+                    console.log('computed')
+                    return this.counter > 5 ? "greater 5" : "Smaller than 5"
+                },
+            },
+            watch: {
+                counter: function(value) {
+                    var vm = this;
+                    setTimeout(function() {
+                        vm.counter = 0;
+                    }, 2000);
+                },
+            },
+            methods: {
+                result() {
+                    console.log('methods')
+                    return this.counter > 5 ? "greater 5" : "Smaller than 5"
+>>>>>>> fe8e4d394f1246c86142a9868ea57006d6669739
                 }
             }
         });
     </script>
+    <!-- computed gọi và dùng như data nhưng nó lại là function như methods -->
+    <!-- computed biết cái cần để ý nên nó chỉ chạy 1 lần còn methods là lúc đ nào cũng chạy. ví dụ mày bấm cộng secondCounter 
+    methods vẫn chạy còn output thì không vì nó biết nó chỉ cần quan tâm đến thằng counter đi -->
+    <!-- watch dùng để thực hiện sự kiện khi biến trong data thay đổi-->
 </body>
 </html>
