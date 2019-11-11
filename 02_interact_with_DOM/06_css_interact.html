@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="vue.js"></script>
+        <style>
+            
+            .demo {
+                width: 100px;
+                height: 100px;
+                background-color: gray;
+                display: inline-block;
+                margin: 10px;
+            }
+            .red {
+                background-color: red;
+            }
+            .green {
+                background-color: green;
+            }
+            .blue {
+                background-color: blue;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="app">
+            <div class="demo"
+                 @click="attachRed = !attachRed"
+                 :class="divclasses"></div>
+            <div class="demo" :class="{red: attachRed}"></div>
+            <div class="demo" :class="[color, {red: attachRed}]"></div>
+            <br>
+            <input type="text" v-model="color">
+            <p>a</p>
+        </div>
+        <!-- khi ấn vào cái khung đỏ nó sẽ switch attachRed từ true sang false và ngược lại-->
+        <!-- còn cái class sẽ là red bằng attachRed bằng true và blue nếu attachRed bằng false -->
+    </body>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                attachRed: false,
+                color: "green" 
+            },
+            computed: {
+                divclasses: function() {
+                    return {
+                        red: this.attachRed,
+                        blue: !this.attachRed
+                    }
+                }
+            }
+        }); 
+    </script>
+</html>

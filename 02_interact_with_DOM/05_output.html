@@ -5,14 +5,35 @@
 </head>
 
 <body>
-    <button v-on:click = "increase()"> increase </button>
-    <p> counter: {{ counter }} </p>
-    <p> result: {{ result }} </p>
+    <div id="app">
+        <button v-on:click = "counter++"> increase </button>
+        <button v-on:click = "counter--"> decrease </button>
+        <button v-on:click= "secondCounter++"> Increase second </button>
+        <p> counter: {{ counter }} </p>
+        <!-- tất cả mọi thứ trong computed có thể gọi ra như trong data dù nó là function -->
+        <p> result: {{ result() }} | {{ output }} </p>
+
+    </div>
+    
 
     <script>
         new Vue({
-            el: 
-        })
+            el: "#app",
+            data: {
+                counter: 0,
+                secondCounter: 0
+            },
+            computed: {
+                output: function() {
+                    return this.counter >  5 ? "Greater 5" : "Smaller than 5";
+                }
+            },
+            methods: {
+                increase: function() {
+                    return this.counter >  5 ? "Greater 5" : "Smaller 5";
+                }
+            }
+        });
     </script>
 </body>
 </html>
