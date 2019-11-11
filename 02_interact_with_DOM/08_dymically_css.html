@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="vue.js"></script>
+        <style>
+            .demo {
+                width: 100px;
+                height: 100px;
+                background-color: gray;
+                display: inline-block;
+                margin: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <!-- cái này bind theo màu nền của color-->
+            <div class="demo" :style="{backgroundColor: color}"></div>
+            <!-- cái này bind theo myStyle-->
+            <div class="demo" :style="myStyle"></div>
+            <!-- cái này bind theo myStyle và bind thêm thuộc tính height bằng width vào nữa-->
+            <div class="demo" :style="[myStyle, {height: width + 'px'}]"></div>
+            <hr>
+            <!-- nhập vào như nào thì giá trị của color hay width sẽ ra như thế-->
+            <input type="text" v-model="color">
+            <input type="text" v-model="width">
+        </div>
+        <script>
+            new Vue({
+                el: '#app',
+                data: {
+                    color: 'gray',
+                    width: 100
+                },
+                computed: {
+                    myStyle: function() {
+                        return {
+                            backgroundColor: this.color,
+                            width: this.width + 'px'
+                        }; 
+                    }
+                }
+            })
+        </script>
+        <!-- cái này bind các-->
+    </body>
+</html>
