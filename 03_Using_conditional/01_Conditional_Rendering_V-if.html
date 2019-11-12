@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p v-if="show"> you can see me</p>
+        <!-- v-if cần 1 biến có giá trị true false hoặc 1 câu lệnh điều kiện sẽ trả về true false-->
+        <template v-if="show">
+            <h1>Heading</h1>
+            <p> Inside a template</p>
+        </template>
+        <!-- thường sẽ dùng template nhiều hơn vì template có thể gộp được nhiều thẻ vào bên trong nó nữa -->
+        <!-- bên trong template sẽ không có v-if lồng vào nữa-->
+
+        <p v-else> final</p>
+        <p v-show="show"> can you see me</p>
+        <!-- với v-if nó sẽ xóa cái thẻ đó đi luôn còn v-show sẽ chỉ thêm cái display là none vào style -->
+        <button @click="show = !show"> switch </button>
+        <!-- bấm cái này show sẽ từ true sang false và ngược lại-->
+    </div>
+    <script>
+        new Vue ({
+            el: "#app",
+            data: {
+                show: true,
+            }
+        });
+    </script>
+</body>

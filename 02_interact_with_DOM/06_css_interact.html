@@ -28,14 +28,18 @@
             <div class="demo"
                  @click="attachRed = !attachRed"
                  :class="divclasses"></div>
+        <!-- khi ấn vào cái khung đỏ nó sẽ switch attachRed từ true sang false và ngược lại-->
+        <!-- còn cái class sẽ là red bằng attachRed bằng true và blue nếu attachRed bằng false -->
             <div class="demo" :class="{red: attachRed}"></div>
+        <!-- còn cái này bình thường nó sẽ là class demo nhưng nếu attachRed bằng true thì nó sẽ chuyển sang class red-->
             <div class="demo" :class="[color, {red: attachRed}]"></div>
+        <!-- còn cái này bình thường nó sẽ là class demo nhưng nếu color có giá trị là class gì, nó sẽ thành màu đó. 
+             Còn nếu cái đầu không có giá trị bằng true thì nó sẽ chuyển sang class red nếu attachRed bằng true-->
             <br>
             <input type="text" v-model="color">
             <p>a</p>
         </div>
-        <!-- khi ấn vào cái khung đỏ nó sẽ switch attachRed từ true sang false và ngược lại-->
-        <!-- còn cái class sẽ là red bằng attachRed bằng true và blue nếu attachRed bằng false -->
+       
     </body>
 
     <script>

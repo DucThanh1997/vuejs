@@ -7,6 +7,7 @@
 <body>
     <div id="app">
         <input type="text" v-model="name">
+        <!-- cái vmodel để khi nhập vào nó chuyển giá trị sang biến luôn-->
         <p> {{ name }} </p>
     </div>
 
@@ -15,7 +16,7 @@
             el: "#app",
             data: {
                 name: "Max"
-            }
+            },
             methods: {
                 increase: function(step, event) {
                     this.count = this.count + step
@@ -24,4 +25,4 @@
         });
     </script>
 </body>
-<!html>
+</html>
