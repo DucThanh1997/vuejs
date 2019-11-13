@@ -6,7 +6,8 @@
     <body>
         <div id="app">
             <ul>
-                <li v-for="(ingredient, index) in ingredients"> {{ ingredient }}, {{ index }}</li>
+                <li v-for="(ingredient, index) in ingredients" :key="ingredient "> {{ ingredient }}, {{ index }}</li>
+                <!-- lưu key vào cho an toàn để vuejs nó nhớ-->
                 <!-- v-for để loop qua toàn bộ cái list còn ingredient là cái biến tạm để loop qua list -->
                 <!-- 2 biến ingredient và index lần lượt để chỉ giá trị và chỉ số index trong list 2 biến này đặt tên như nào cũng được -->
             </ul>
@@ -15,6 +16,9 @@
                     <li v-for="person in persons">
                         <div v-for="(key, value, index) in person"> {{ key }}: {{ value }}, {{ index }}</div>
                 </ul>
+                <button @click="ingredients.push('spices')"> Add new</button>
+            <hr>
+                <span v-for="n in 10"> {{ n }}</span>
             <hr>
             <template v-for="(ingredient, index) in ingredients">
                 <h1> {{ ingredient }} </h1>
