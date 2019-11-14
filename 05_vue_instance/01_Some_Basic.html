@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="vue.js"></script>
+    </head>
+    <body>
+        <div id="app1">
+            <h1 ref="heading"> {{ title }}</h1>
+            <button @click="show" ref="myButton"> Show Paragraph</button>
+            <p v-if="showParagraph">This is not always visible</p>
+        </div>
+        <div id="app2">
+            <h1> {{ title }}</h1>
+            <button @click="onChange">thay đổi</button>
+        </div>
+        <div id="app3">
+
+        </div>
+        <script>
+            
+            var data = {
+                title: 'The VueJS Instance',
+                showParagraph: false
+            }
+            var vm1 = new Vue({ 
+                    el: '#app1',
+                    data: data,
+                    methods: {
+                        show: function() {
+                            this.showParagraph = !this.showParagraph;
+                            this.updateTitle('The VueJS Instance (Updated)');
+                            console.log(this.showParagraph)
+                        },
+                        updateTitle: function(title) {
+                            this.title = title;
+                        }
+                    },
+                    computed: {
+                        lowercaseTitle: function() {
+                            return this.title.toLowerCase();
+                        }
+                    },
+                    watch: {
+                        title: function(value) {
+                            alert('Title changed, new value: ' + value);
+                        }
+                    }
+                })
+            // vm1.$refs.heading.innerText = "Something else";   
+            vm1.$refs.myButton.innerText = "Đăng bò";   
+            setTimeout(function() {
+                vm1.title = "Changed by timer"
+            }, 3000);      
+            var vm2 = new Vue({
+                    el: '#app2',
+                    data: {
+                        title: 'The VueJS Instance',
+                    },
+                    methods: {
+                        onChange: function() {
+                            vm1.title = "Changed"
+                        }
+                    }
+            });
+            var vm3 = new Vue({
+                template: '<h1> Hello! </h1>'
+            });
+
+            vm3.$mount('#app3'); 
+            
+        </script>
+        <!-- có thể có nhiều vue instance-->
+        <!-- có thể truy cập được các phần tử ở trong vue instance -->
+        <!-- có thể gán giá trị của bên ngoài vào trong vue instance -->
+        <!-- có thể gán giá trị bằng cái refs -->
+    </body>
+</html>
