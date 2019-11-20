@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <my-cmp></my-cmp>
+            <hr>
+            <my-cmp></my-cmp>
+        </div>
+        <div id="app2">
+            <my-cmp></my-cmp>
+            <hr>
+            <my-cmp></my-cmp>
+        </div>
+        <script>
+            // var data = { status: "critical"} 
+            Vue.component('my-cmp', {
+                data: function() {
+                    return { status: "critical"}
+                },
+                template: '<p>Server Status: {{ status }} (<button @click="changeStatus">Change</button>) </p> ',
+                methods: {
+                    changeStatus: function() {
+                        this.status = 'normal';
+                    }
+                }
+            });
+            new Vue ({
+                el: "#app"
+            })
+            new Vue ({
+                el: "#app2"
+            })
+        </script>
+        <!-- data ở trong component phải trả về function để không bị trùng với data trong cái vue instance-->
+        <!-- nếu bạn có cái var data = { status: "critical"} này xong trỏ vào cái data trong component khi thực hiện hàm changeStatus ở 1 component nó sẽ thay đổi cả 2 biến status 
+            ở trong 2 component. Vì cả 2 component trỏ đến cùng 1 địa chỉ nên khi địa chỉ nó thay đổi thì giá trị đó thay đổi -->
+        <!-- để tránh điều này thì chúng ta nên dùng data trong component thì mỗi cái sẽ có 1 địa chỉ trong bộ nhớ riêng -->
+    </body>
+</html>

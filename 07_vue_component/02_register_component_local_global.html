@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <my-cmp></my-cmp>
+            <hr>
+            <my-cmp></my-cmp>
+        </div>
+        <script>
+            var cmp = {
+                data: function() {
+                    return {
+                        status: 'critical'
+                    };
+                },
+                template: '<p>Server Status: {{ status }} (<button @click="changeStatus">Change</button>)</p>',
+                methods: {
+                    changeStatus: function() {
+                        this.status = 'Normal'
+                    }
+                }
+            }
+            new Vue ({
+                el: "#app",
+                components: {
+                    'my-cmp': cmp
+                }
+            })
+        </script>
+        <!-- đây là cách set-up local component-->
+    </body>
+</html>
