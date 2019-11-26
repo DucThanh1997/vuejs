@@ -24,11 +24,15 @@
                 title: 'The VueJS Instance',
                 showParagraph: false
             }
+            // vue.component dùng để tạo thành 1 template có thể dùng lại. Gọi nó ra <hello></hello> không có thẻ nào thế đâu nhé chỉ vì tên component nó thế thôi
             Vue.component('hello', {
+                // template trong vue instance để tạo 1 cái lệnh html
                 template: '<h1>Hello</h1>'
             });
+            // có thể có nhiều vue instance
             var vm1 = new Vue({ 
                     el: '#app1',
+                    // có thể gán giá trị của bên ngoài vào trong vue instance
                     data: data,
                     methods: {
                         show: function() {
@@ -52,6 +56,9 @@
                     }
                 })
             // vm1.$refs.heading.innerText = "Something else";   
+            // có thể truy cập được các phần tử ở trong vue instance ở trong 1 vue instance khác hoặc ở phần script
+            // tuy nhiên không khởi tạo được biến hay method của vue instance ở phía bên ngoài nó
+            // có thể gán giá trị bằng cái refs
             vm1.$refs.myButton.innerText = "Đăng bò";   
             setTimeout(function() {
                 vm1.title = "Changed by timer"
@@ -74,18 +81,11 @@
                 template: '<h1> Hello! </h1>'
             });
 
+            // mount dùng thay cho el được
             vm3.$mount('#app3'); 
             
         </script>
-        <!-- có thể có nhiều vue instance-->
-        <!-- có thể truy cập được các phần tử ở trong vue instance ở trong 1 vue instance khác hoặc ở phần script -->
-        <!-- có thể gán giá trị của bên ngoài vào trong vue instance -->
-        <!-- không khởi tạo được biến hay method của vue instance ở phía bên ngoài nó-->
-        <!-- có thể gán giá trị bằng cái refs -->
-        <!-- template trong vue instance để tạo 1 cái lệnh html-->
-        <!-- mount dùng thay cho el được-->
-        <!-- vue.component dùng để tạo thành 1 template có thể dùng lại. Gọi nó ra <hello></hello> không có thẻ nào thế đâu nhé chỉ vì tên component nó thế thôi-->
         <!-- vue có virtual dom, vue instance trước khi update vào DOM nó sẽ update vào virtual DOM (rất nhanh để truy cập) rồi Virtual DOM sẽ so sánh đối chiếu
-            xem có sự thay đổi nào thực sự không nếu có sự thay đổi thì nó mới update sang DOM xịn vì update liên tục từ Vue instance sang DOM(rất chậm)->
+            xem có sự thay đổi nào thực sự không nếu có sự thay đổi thì nó mới update sang DOM xịn vì update liên tục từ Vue instance sang DOM(rất chậm)-->
     </body>
 </html>

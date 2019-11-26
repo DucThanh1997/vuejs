@@ -1,22 +1,17 @@
 <template>
     <div>
-        <p> Sever Status: {{ status }} </p>
-        <hr>
-        <button @click="changeStatus"> Change Status </button>
+        <app-server-status v-for="server in 5"></app-server-status>
     </div>
 </template>
 
 <script>
+import ServerStatus from './ServerStatus.vue'
 export default {
-    data: function() {
-        return {
-            status: 'critical'
-        }
-    },
-    methods: {
-        changeStatus() {
-            this.status = 'normal';
-        }
+    components: {
+        'app-server-status': ServerStatus
     }
 }
 </script>
+<!-- gọi ServerStatus ra từ file vue cùng tên -->
+<!-- đặt tên là app-server-status cho ServerStatus -->
+<!-- sang main.js để gọi cho cái app -->
