@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+
+    <body>
+        <div id="app">
+            <h5>Khi mẹ vắng nhà</h5>
+            <input 
+                v-model="newWork"
+                v-on:keyup.Enter="add"
+                placeholder="thêm việc cần làm">
+            <ul>
+                <li
+                    is="todo-item"
+                    v-for="(todo, index) in todos"
+                    v-bind:key="todo.id"
+                    v-bind:title="todo.title"
+                    v-on:remove="todos.splice(index, 1)">
+                </li>
+            </ul>
+        </div>
+        <script>
+            Vue.component('todo-item', {
+                template: '\
+                <li>\
+                {{ title }}\
+                <button v-on:click="$emit(\'remove\')">X</button>\
+                </li>\
+                ',
+                props: ['title']
+            })
+
+            new Vue({
+                el: '#app',
+                data: {
+                    newWork: "",
+                    todos: [
+                        {
+                            id: 1,
+                            title: 'luộc khoai',
+                        },
+                        {
+                            id: 2,
+                            title: 'giã gạo',
+                        },
+                        {
+                            id: 3,
+                            title: "quét nhà"
+                        }
+                        
+                    ],
+                    nextTodoIndex: 4
+                },
+                methods: {
+                    add: function() {
+                        this.todos.push({
+                            id: this.nextTodoIndex++,
+                            title: this.newWork
+                        })
+                        this.newWork=""
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

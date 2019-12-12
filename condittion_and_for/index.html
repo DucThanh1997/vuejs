@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <template v-if="loginType === 'username'">
+                <label>Username</label>
+                <input placeholder="Enter username" >
+            </template> 
+            <template v-else>
+                <label>Email</label>
+                <input placeholder="Enter Email" >
+            </template>
+            <button @click="attack">change</button>
+        </div>
+        <script>
+            var vm = new Vue({
+                el: "#app",
+                data: {
+                    loginType: "username"
+                },
+                methods: {
+                    attack: function() {
+                        if (this.loginType === "username") {
+                            this.loginType = "email"
+                        } else {
+                            this.loginType = "username"
+                        }
+                    }
+                }
+            })
+        // v-if có phí tổn bật/tắt cao, còn v-show có phí tổn render cao. Vì thế, nếu bạn cần bật/tắt thường xuyên, hãy dùng v-show
+        </script>
+    </body>
+</html>

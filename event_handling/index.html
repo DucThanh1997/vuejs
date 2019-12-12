@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <button @click="count += 1"> cộng </button>
+            <p>Số lần bấm {{ count }} </p>
+        </div>
+        <div id="app2">
+            <button v-on:click="alertMe"> cảnh báo</button>
+            <button v-on:click="warn('chưa submit form.', $event)">Submit</button>
+        </div>
+        <script>
+            var vm = new Vue ({
+                el: "#app",
+                data: {
+                    count : 0,
+                }
+            })
+            var vm2 = new Vue({
+                el: "#app2",
+                data: {
+                    name: "Thành"
+                },
+                methods: {
+                    alertMe: function(event) {
+                        alert("Bạn " + this.name + " siêu đẹp trai")
+                        if (event) {
+                            this.name = "Linh"
+                            alert(this.name)
+                        } 
+                    },
+                    warn: function(message, event) {
+                        if (event) event.preventDefault() 
+                            alert(message)
+                    }
+                    
+                }
+            })
+        </script>
+    </body>
+</html>

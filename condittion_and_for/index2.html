@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id ="app">
+            <ul>
+                <li v-for = "(value, key) in object">
+                    {{key}}: {{value}}
+                </li>
+            </ul>
+            <script>
+                var vm = new Vue({
+                    el: "#app",
+                    data: {
+                        object: {
+                            "họ": "Bành",
+                            "tên": "Tổ"
+                        }
+                    }
+                })
+                vm.$set(vm.object, "age", 800)
+                vm.$set(vm.object, "tên", "l")
+                // set lại giá trị hoặc thêm giá trị mới như này các thứ như này
+            </script>
+            
+        </div>
+    </body>
+</html>

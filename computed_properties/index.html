@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="example">
+            <p> THông điệp ban đầu: "{{ message }}"</p>
+            <p> Thông điệp bị đảo ngược bằng tính toán (computed): "{{ reveedMessage }}"</p>
+        </div>
+        <script>
+            var vm = new Vue({
+                el: "#example",
+                data: {
+                    message: "nắng vàng"
+                },
+                computed: {
+                    reveedMessage: function() {
+                        return this.message.split(' ').reverse().join(' ')
+                    }
+                }
+                // methods lúc nào cũng chạy
+                // computed chạy 1 lần khi render và được cache lại
+                // watcher chỉ chạy khi 1 biến nào đó thay đổi hoặc 1 sự kiện nào đó xảy ra
+            })
+        </script>
+    </body>
+</html>

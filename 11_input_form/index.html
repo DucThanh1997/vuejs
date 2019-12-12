@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id='example-3'>
+            <select v-model="picked">
+                    <option disabled value="">Vui lòng chọn món</option>
+                    <option>Đọt bí xào tỏi</option>
+                    <option>Canh bông điên điển</option>
+                    <option>Lẩu nấm</option>
+            </select>
+            <span>Món đã chọn: {{ picked }}</span>
+        </div>
+        <div id="app">
+            <select v-model="selected">
+                <option v-for="option in options" v-bind:value="option.value">
+                    {{ option.text }} - {{ option.value }}
+                </option>
+            </select>
+            <span>Giá tiền: {{ selected }}</span>
+        </div>
+        <script>
+            new Vue({
+                el: '#example-3',
+                data: {
+                    picked: []
+                }
+            })
+            new Vue({
+                el: "#app",
+                data: {
+                    selected: "",
+                    options: [
+                        {text: "mì", value: "50k"},
+                        {text: "phở", value: "100k"},
+                        {text: "bún", value: "80k"}
+                    ]
+                }
+            })
+            // checkbox cho chọn nhiều
+            // radio cho chọn 1 cái thôi
+            // kiểu select là chọn từ trên xuống và chọn được 1 cái thôi
+        </script>
+    </body>
+</html>

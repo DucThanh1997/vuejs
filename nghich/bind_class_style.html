@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app" class="static"
+             v-bind:class="{ active:isActive, 'text-danger': hasError }">
+             <p v-bind:stlye="{color: activeColor,fontSize: fontSize + 'px' }">aaaaa</p>
+        </div>
+
+        <script>
+            var vm = new Vue({
+                el:"#app",
+                data: {
+                    isActive: true,
+                    hasError: false,
+                    activeColor: "red",
+                    fontSize: 30,
+                }
+            })
+        </script>
+    </body>
+</html>

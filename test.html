@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            {{ message }}
+        </div>
+
+        <div id="app-2">
+            <!-- v-bind để gán giá trị vào -->
+            <span v-bind:title="message">
+                aaaa
+            </span>
+        </div>
+        
+        <div id="app-3">
+            <span v-if="seen"> Thoắt ẩn thoắt hiện</span>
+        </div>
+
+        <div id="app-4">
+            <ol>
+                <li v-for="todo in todos">
+                    {{ todo.text }}
+                </li>
+            </ol>
+        </div>
+
+        <div id="app-5">
+            <p>{{ message }}</p>
+            <!-- v-on để lắng nghe 1 event nào đó-->
+            <button v-on:click="reverseMessage"> Đảo </button>
+        </div>
+
+        <div id="app-6">
+            <p> {{ message }} </p>
+            <!-- v-model để thay đổi ngay lập tức, thêm .lazy nữa nó sẽ sửa sau-->
+            <input v-model.lazy="message">
+        </div>
+
+        <script>
+            var app = new Vue({
+                el: "#app",
+                data: {
+                    message: 'lololo'
+                }
+            })
+            var app2 = new Vue({
+                el: "#app-2",
+                data: {
+                    message: 'Bạn đã mở trang này vào ' + new Date().toLocaleDateString()
+                }
+            })
+            var app3 = new Vue({
+                el: '#app-3',
+                data: {
+                    seen: true
+                }
+            })
+            var app4 = new Vue({
+                el: '#app-4',
+                data: {
+                    todos: [
+                        {text: ' học javascript'},
+                        {text: ' học vue'},
+                        {text: ' nghịch'},
+                    ]
+                }
+            })
+            var app5 = new Vue({
+                el: '#app-5',
+                data: {
+                    message: "vắng nàng nắng vàng"
+                },
+                methods: {
+                    reverseMessage: function() {
+                        this.message = this.message.split(' ').reverse().join(' ')
+                    }
+                } 
+            })
+            var app6 = new Vue({
+                el: '#app-6',
+                data: {
+                    message: "sửa nó đi"
+                }
+            })
+        </script>
+        
+    </body>
+</html>
