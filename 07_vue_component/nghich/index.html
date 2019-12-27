@@ -1,2 +1,25 @@
 <!DOCTYPE html>
-<
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <button-counter></button-counter>
+        </div>
+        <script>
+
+            Vue.component('button-counter', {
+                data: function() {
+                    return {
+                        count : 0,
+                    }
+                },
+                template: '<button v-on:click="count++"> bạn đã bấm {{count}} </button>'
+            })
+            new Vue({
+                el: "#app"
+            })
+        </script>
+    </body>
+</html>
